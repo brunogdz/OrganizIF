@@ -1,0 +1,7 @@
+{
+  "name": "OrganizeIF",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
