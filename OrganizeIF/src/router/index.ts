@@ -3,14 +3,15 @@ import { RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import Lists from '../views/Lists.vue';
 import All from '../views/All.vue';
+import Work from '../views/Work.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/lists'
+    redirect: '/Lists'
   },
   {
-    path: '/lists',
+    path: '/Lists',
     name: 'Lists',
     component: Lists
   },
@@ -23,6 +24,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/all',
     name: 'All',
     component: All
+  },
+  {
+    path: '/work',
+    name: 'Work',
+    component: Work
   }
 ]
 

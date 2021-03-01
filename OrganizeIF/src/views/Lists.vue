@@ -21,9 +21,10 @@
 
                     </router-link>
                 </ion-card>
-                                <ion-card class="w-2/5">
 
-                    <router-link :to="{name: 'Trabalho'}">
+                <ion-card class="w-2/5">
+
+                    <router-link :to="{name: 'Work'}">
                         <ion-card-header>
 
                             <ion-icon :icon="briefcase" size="large" class="text-yellow-800"></ion-icon>
@@ -45,7 +46,7 @@
 <script>
 import { defineComponent } from "vue";
 import { IonPage, IonCard, IonCardHeader, IonIcon } from '@ionic/vue';
-import { clipboard } from 'ionicons/icons';
+import { clipboard, briefcase } from 'ionicons/icons';
 export default defineComponent({
 
     components:{
@@ -54,7 +55,7 @@ export default defineComponent({
 
     setup(){
         return {
-            clipboard
+            clipboard, briefcase
         }
     }
 
