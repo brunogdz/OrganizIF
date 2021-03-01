@@ -4,14 +4,21 @@ import Home from '../views/Home.vue';
 import Lists from '../views/Lists.vue';
 import All from '../views/All.vue';
 import Work from '../views/Work.vue';
+import Ideas from '../views/Ideas.vue';
+import Music from '../views/Music.vue';
+import Read from '../views/Read.vue';
+import Scheduler from '../views/Scheduler.vue';
+import Shopping from '../views/Shopping.vue';
+import Study from '../views/Study.vue';
+import Travel from '../views/Travel.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/Lists'
+    redirect: '/lists'
   },
   {
-    path: '/Lists',
+    path: '/lists',
     name: 'Lists',
     component: Lists
   },
@@ -29,6 +36,41 @@ const routes: Array<RouteRecordRaw> = [
     path: '/work',
     name: 'Work',
     component: Work
+  },
+  {
+    path: '/ideas',
+    name: 'Ideas',
+    component: Ideas
+  },
+  {
+    path: '/music',
+    name: 'Music',
+    component: Music
+  },
+  {
+    path: '/read',
+    name: 'Read',
+    component: Read
+  },
+  {
+    path: '/scheduler',
+    name: 'Scheduler',
+    component: Scheduler
+  },
+  {
+    path: '/shopping',
+    name: 'Shopping',
+    component: Shopping
+  },
+  {
+    path: '/study',
+    name: 'Study',
+    component: Study
+  },
+  {
+    path: '/travel',
+    name: 'Travel',
+    component: Travel
   }
 ]
 

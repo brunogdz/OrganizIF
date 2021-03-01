@@ -27,7 +27,7 @@
                     <router-link :to="{name: 'Work'}">
                         <ion-card-header>
 
-                            <ion-icon :icon="briefcase" size="large" class="text-yellow-800"></ion-icon>
+                            <ion-icon :icon="briefcase" size="large" class="text-yellow-600"></ion-icon>
                         </ion-card-header>
 
                         <ion-card-content>
@@ -38,6 +38,133 @@
                     </router-link>
                 </ion-card>
 
+                <ion-card class="w-2/5">
+
+                    <router-link :to="{name: 'Scheduler'}">
+                        <ion-card-header>
+
+                            <ion-icon :icon="calendar" size="large" class="text-red-600"></ion-icon>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <ion-card-title class="text-2x1">Horário</ion-card-title>
+                            <ion-card-subtitle>Montar o seu horário</ion-card-subtitle>
+                        </ion-card-content>
+
+                    </router-link>
+                </ion-card>
+
+                <ion-card class="w-2/5">
+
+                    <router-link :to="{name: 'Study'}">
+                        <ion-card-header>
+
+                            <ion-icon :icon="school" size="large" class="text-green-600"></ion-icon>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <ion-card-title class="text-2x1">Estudar</ion-card-title>
+                            <ion-card-subtitle>Tarefas e Atividades</ion-card-subtitle>
+                        </ion-card-content>
+
+                    </router-link>
+                </ion-card>
+
+                <ion-card class="w-2/5">
+
+                    <router-link :to="{name: 'Music'}">
+                        <ion-card-header>
+
+                            <ion-icon :icon="headset" size="large" class="text-indigo-400"></ion-icon>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <ion-card-title class="text-2x1">Musicas</ion-card-title>
+                            <ion-card-subtitle>Anotar musicas para não esquecer</ion-card-subtitle>
+                        </ion-card-content>
+
+                    </router-link>
+                </ion-card>
+
+                <ion-card class="w-2/5">
+
+                    <router-link :to="{name: 'Read'}">
+                        <ion-card-header>
+
+                            <ion-icon :icon="book" size="large" style="#010101"></ion-icon>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <ion-card-title class="text-2x1">Leitura</ion-card-title>
+                            <ion-card-subtitle>Tarefas</ion-card-subtitle>
+                        </ion-card-content>
+
+                    </router-link>
+                </ion-card>
+
+                <ion-card class="w-2/5">
+
+                    <router-link :to="{name: 'Home'}">
+                        <ion-card-header>
+
+                            <ion-icon :icon="home" size="large" style="color:#2DD4BF"></ion-icon>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <ion-card-title class="text-2x1">Casa</ion-card-title>
+                            <ion-card-subtitle>Tarefas</ion-card-subtitle>
+                        </ion-card-content>
+
+                    </router-link>
+                </ion-card>
+
+            <ion-card class="w-2/5">
+
+                    <router-link :to="{name: 'Shopping'}">
+                        <ion-card-header>
+
+                            <ion-icon :icon="book" size="large" style="color:#115E59"></ion-icon>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <ion-card-title class="text-2x1">Compras</ion-card-title>
+                            <ion-card-subtitle>Anotações</ion-card-subtitle>
+                        </ion-card-content>
+
+                    </router-link>
+            </ion-card>
+
+                <ion-card class="w-2/5">
+
+                    <router-link :to="{name: 'Travel'}">
+                        <ion-card-header>
+
+                            <ion-icon :icon="airplane" size="large" class="text-blue-400"></ion-icon>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <ion-card-title class="text-2x1">Viagens</ion-card-title>
+                            <ion-card-subtitle>Lugares para visitar</ion-card-subtitle>
+                        </ion-card-content>
+
+                    </router-link>
+            </ion-card>
+                <ion-card class="w-2/5">
+
+                    <router-link :to="{name: 'Ideas'}">
+                        <ion-card-header>
+
+                            <ion-icon :icon="bulb" size="large" style="#201EE9"></ion-icon>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <ion-card-title class="text-2x1">Viagens</ion-card-title>
+                            <ion-card-subtitle>Lugares para visitar</ion-card-subtitle>
+                        </ion-card-content>
+
+                    </router-link>
+            </ion-card>
+                
             </div>
         </div>
     </ion-page>
@@ -45,17 +172,17 @@
 
 <script>
 import { defineComponent } from "vue";
-import { IonPage, IonCard, IonCardHeader, IonIcon } from '@ionic/vue';
-import { clipboard, briefcase } from 'ionicons/icons';
+import { IonPage, IonCard, IonCardHeader, IonIcon, IonCardContent, IonCardTitle, IonCardSubtitle } from '@ionic/vue';
+import { clipboard, briefcase, bulb, calendar, airplane, book, cart, headset, home, pencil, school} from 'ionicons/icons';
 export default defineComponent({
 
     components:{
-        IonPage, IonCard, IonCardHeader, IonIcon
+        IonPage, IonCard, IonCardHeader, IonIcon, IonCardContent, IonCardTitle, IonCardSubtitle
     },
 
     setup(){
         return {
-            clipboard, briefcase
+            clipboard, briefcase, bulb, calendar, airplane, book, cart, headset, home, pencil, school 
         }
     }
 
