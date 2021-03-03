@@ -15,10 +15,10 @@ import Travel from '../views/Travel.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/lists'
+    redirect: '/Lists'
   },
   {
-    path: '/lists',
+    path: '/Lists',
     name: 'Lists',
     component: Lists
   },

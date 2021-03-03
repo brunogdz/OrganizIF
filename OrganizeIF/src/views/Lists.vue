@@ -5,7 +5,7 @@
                 <h1 class="text-4x1 pl-5 font-semibold">Listagem</h1>
             </div>
 
-            <div class="flex w-full flex-col overflow-auto mt-2">
+            <div class="flex w-full flex-row flex-wrap justify-around mt-2">
                 <ion-card class="w-2/5">
 
                     <router-link :to="{name: 'All'}">
@@ -158,22 +158,39 @@
                         </ion-card-header>
 
                         <ion-card-content>
-                            <ion-card-title class="text-2x1">Viagens</ion-card-title>
-                            <ion-card-subtitle>Lugares para visitar</ion-card-subtitle>
+                            <ion-card-title class="text-2x1">Ideias</ion-card-title>
+                            <ion-card-subtitle>Ideias e anotações</ion-card-subtitle>
                         </ion-card-content>
 
                     </router-link>
             </ion-card>
                 
             </div>
+
+                <div>
+                    <ion-fab @click="isOpenNewTask = true" vertical="bottom" horizontal="end" slot="fixed">
+                        <ion-fab-button>
+                            <ion-icon :icon="add"></ion-icon>
+                        </ion-fab-button>
+                    </ion-fab>
+
+                    <ion-modal 
+                        :is-open="isOpenNewTask"
+                        :backdrop-dismiss="false">
+                        
+                        <new-task @closeModal="isOpenNewTask = false"></new-task>    
+                    </ion-modal>
+
+                </div>
+
         </div>
     </ion-page>
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import { IonPage, IonCard, IonCardHeader, IonIcon, IonCardContent, IonCardTitle, IonCardSubtitle } from '@ionic/vue';
-import { clipboard, briefcase, bulb, calendar, airplane, book, cart, headset, home, pencil, school} from 'ionicons/icons';
+import { defineComponent, ref } from "vue";
+import { IonPage, IonCard, IonCardHeader, IonIcon, IonCardContent, IonFabButton, IonCardTitle, IonCardSubtitle } from '@ionic/vue';
+import { clipboard, briefcase, bulb, calendar, airplane, book, cart, add, headset, home, pencil, school} from 'ionicons/icons';
 export default defineComponent({
 
     components:{
@@ -181,8 +198,10 @@ export default defineComponent({
     },
 
     setup(){
+
+        const isOpenNewTask = ref(false);
         return {
-            clipboard, briefcase, bulb, calendar, airplane, book, cart, headset, home, pencil, school 
+            clipboard, briefcase, bulb, calendar, airplane, book, cart, add, headset, home, pencil, school 
         }
     }
 
