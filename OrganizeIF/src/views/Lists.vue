@@ -123,7 +123,7 @@
                     <router-link :to="{name: 'Shopping'}">
                         <ion-card-header>
 
-                            <ion-icon :icon="book" size="large" style="color:#115E59"></ion-icon>
+                            <ion-icon :icon="cart" size="large" style="color:#115E59"></ion-icon>
                         </ion-card-header>
 
                         <ion-card-content>
@@ -189,15 +189,17 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import { IonPage, IonCard, IonCardHeader, IonIcon, IonCardContent, IonFabButton, IonCardTitle, IonCardSubtitle } from '@ionic/vue';
+import { IonPage, IonCard, IonCardHeader, IonIcon, IonCardContent, IonFabButton, IonCardTitle, IonCardSubtitle, IonFab, IonModal } from '@ionic/vue';
 import { clipboard, briefcase, bulb, calendar, airplane, book, cart, add, headset, home, pencil, school} from 'ionicons/icons';
+import NewTask from "@/components/NewTask.vue";
 export default defineComponent({
 
     components:{
-        IonPage, IonCard, IonCardHeader, IonIcon, IonCardContent, IonCardTitle, IonCardSubtitle
+        IonPage, IonCard, IonCardHeader, IonIcon, IonCardContent, IonFabButton, IonCardTitle, IonCardSubtitle, IonFab, IonModal, NewTask
     },
 
-    setup(){
+ 
+        setup(){
 
         const isOpenNewTask = ref(false);
         return {
