@@ -66,6 +66,29 @@
                          <ion-text color="danger" v-if="message"></ion-text>
                      </ErrorMessage>
                 </ion-item>
+
+                <ion-item>
+                    <ion-icon :icon="thermometerOutline" color="primary" slot="start"></ion-icon>
+                    <ion-label>Prioridade</ion-label>
+                    <Field v-model="priority" v-slot="{field}" name="priorityField">
+                        <ion-select v-bind="field" placeholder="Escolha a prioridade">
+                            <ion-select-option value="red" class="danger-priority">Alta</ion-select-option>
+                            <ion-select-option value="yellow" class="warning-priority">Média</ion-select-option>
+                            <ion-select-option value="green" class="sucess-priority">Baixa</ion-select-option>
+                            <!-- <ion-button color="success">Success</ion-button>
+                            <ion-button color="warning">Warning</ion-button>
+                            <ion-button color="danger">Danger</ion-button> -->
+                        </ion-select>
+                    </Field>
+                </ion-item>
+
+                <ion-item lines="none">
+                    <ErrorMessage v-slot="{message}" name="categoryField">
+                         <ion-text color="danger" v-if="message"></ion-text>
+                     </ErrorMessage>
+                </ion-item>
+                    
+                    
             </div>
         </Form>
       <ion-fab vertical="top" horizontal="end" slot="fixed" class="cursor-pointer" @click="$emit('close-modal')">
@@ -77,7 +100,7 @@
 <script>
 import { defineComponent, ref } from "vue";
 import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonDatetime, IonTextarea, IonLabel } from '@ionic/vue';
-import {close, notifications, document, grid} from "ionicons/icons";
+import {close, notifications, document, grid, thermometerOutline} from "ionicons/icons";
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
 export default defineComponent({
@@ -90,6 +113,7 @@ export default defineComponent({
         const task = ref('');
         const note = ref('');
         const category = ref('');
+        const priority = ref('');
         const isRequired = (value) => {
             if(!value){
                 return 'Esse campo é preciso preencher';
@@ -97,8 +121,8 @@ export default defineComponent({
             return true;
         }
         return{
-            isRequired, task, dueDate, note, grid,
-            close, notifications, document, category
+            isRequired, task, dueDate, note, grid, thermometerOutline,
+            close, notifications, document, category, priority
         }
     }
 })
