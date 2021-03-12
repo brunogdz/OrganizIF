@@ -203,7 +203,7 @@ export default defineComponent({
 
         const isOpenNewTask = ref(false);
         return {
-            clipboard, briefcase, bulb, calendar, airplane, book, cart, add, headset, home, pencil, school 
+            clipboard, briefcase, bulb, calendar, airplane, book, cart, add, headset, home, pencil, school, isOpenNewTask
         }
     }
 

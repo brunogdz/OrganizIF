@@ -21,6 +21,52 @@
                 </ion-item>
 
             </div>
+
+            <div>
+                <ion-item>
+                    <ion-icon :icon="notifications" color="primary" slot="start"></ion-icon>
+                    <Field v-slot="{field}" name="duedateField" :rules="isRequired">
+                        <ion-datetime v-bind="field" v-model="dueDate"
+                        display-format="DD MM, YYYY HH:mm"
+                        display-timezone="utc"
+                        value="2021-11-11T00:56:44.646-03:00" max="2025-12-31"></ion-datetime>
+                    </Field>
+                </ion-item>
+                <ion-item lines="none"> 
+                    <ErrorMessage v-slot="{message}" name="duedateField">
+                         <ion-text color="danger" v-if="message"></ion-text>
+                     </ErrorMessage>
+                </ion-item>
+
+                <ion-item>
+                    <ion-icon :icon="document" color="primary" slot="start"></ion-icon>
+                    <ion-textarea v-model="note" placeholder="Coloque aqui os detalhes"></ion-textarea>
+                </ion-item>
+
+                <ion-item>
+                    <ion-icon :icon="grid" color="primary" slot="start"></ion-icon>
+                    <ion-label>Categorias</ion-label>
+                    <Field v-model="category" v-slot="{field}" name="categoryField">
+                        <ion-select v-bind="field" placeholder="Selecione a categoria">
+                            <ion-select-option value="Work">Trabalho</ion-select-option>
+                            <ion-select-option value="Scheduler">Horário</ion-select-option>
+                            <ion-select-option value="Study">Estudar</ion-select-option>
+                            <ion-select-option value="Home">Casa</ion-select-option>
+                            <ion-select-option value="Travel">Viagens</ion-select-option>
+                            <ion-select-option value="Ideas">Ideias</ion-select-option>
+                            <ion-select-option value="Music">Música</ion-select-option>
+                            <ion-select-option value="Read">Leitura</ion-select-option>
+                            <ion-select-option value="Shopping">Compra</ion-select-option>
+                        </ion-select>
+                    </Field>
+                </ion-item>
+
+                <ion-item lines="none">
+                    <ErrorMessage v-slot="{message}" name="categoryField">
+                         <ion-text color="danger" v-if="message"></ion-text>
+                     </ErrorMessage>
+                </ion-item>
+            </div>
         </Form>
       <ion-fab vertical="top" horizontal="end" slot="fixed" class="cursor-pointer" @click="$emit('close-modal')">
           <ion-icon :icon="close" class="text-3x1"></ion-icon>
@@ -30,17 +76,20 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText } from '@ionic/vue';
-import {close} from "ionicons/icons";
+import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonDatetime, IonTextarea, IonLabel } from '@ionic/vue';
+import {close, notifications, document, grid} from "ionicons/icons";
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
 export default defineComponent({
     components:{
-        IonPage, IonFab, IonIcon, IonItem, IonInput, IonText,
+        IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonDatetime, IonTextarea, IonLabel,
         Form, Field, ErrorMessage
     },
     setup(){
+        const dueDate = ref('');
         const task = ref('');
+        const note = ref('');
+        const category = ref('');
         const isRequired = (value) => {
             if(!value){
                 return 'Esse campo é preciso preencher';
@@ -48,8 +97,8 @@ export default defineComponent({
             return true;
         }
         return{
-            isRequired, task,
-            close
+            isRequired, task, dueDate, note, grid,
+            close, notifications, document, category
         }
     }
 })
