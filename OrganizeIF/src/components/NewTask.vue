@@ -27,7 +27,7 @@
                     <ion-icon :icon="notifications" color="primary" slot="start"></ion-icon>
                     <Field v-slot="{field}" name="duedateField" :rules="isRequired">
                         <ion-datetime v-bind="field" v-model="dueDate"
-                        display-format="DD MM, YYYY HH:mm"
+                        display-format="DD-MM-YYYY HH:mm"
                         display-timezone="utc"
                         value="2021-11-11T00:56:44.646-03:00" max="2025-12-31"></ion-datetime>
                     </Field>
