@@ -78,7 +78,7 @@
                             <!-- <ion-button color="success">Success</ion-button>
                             <ion-button color="warning">Warning</ion-button>
                             <ion-button color="danger">Danger</ion-button> -->
-                            <!-- Botao nao funfou mas ver se consigo fazer funfar -->
+                            <!-- Botao nao funfou mas ver se consigo fazer funfar  -->
                         </ion-select>
                     </Field>
                 </ion-item>
