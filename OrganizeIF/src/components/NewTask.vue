@@ -89,7 +89,9 @@
                      </ErrorMessage>
                 </ion-item>
                     
-                    
+                <div>
+                    <ion-button expand="block" type="submit">Criar</ion-button>
+                </div>   
             </div>
         </Form>
       <ion-fab vertical="top" horizontal="end" slot="fixed" class="cursor-pointer" @click="$emit('close-modal')">
@@ -100,13 +102,13 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonDatetime, IonTextarea, IonLabel } from '@ionic/vue';
+import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonDatetime, IonTextarea, IonLabel, IonButton } from '@ionic/vue';
 import {close, notifications, document, grid, thermometerOutline} from "ionicons/icons";
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
 export default defineComponent({
     components:{
-        IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonDatetime, IonTextarea, IonLabel,
+        IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonDatetime, IonTextarea, IonLabel, IonButton,
         Form, Field, ErrorMessage
     },
     setup(){
@@ -120,6 +122,10 @@ export default defineComponent({
                 return 'Esse campo é preciso preencher';
             }
             return true;
+        }
+
+        function addTask(){
+
         }
         return{
             isRequired, task, dueDate, note, grid, thermometerOutline,
