@@ -1,6 +1,12 @@
 <template>
     <ion-page>
-        <h1>Todos</h1>
+        <ion-toolbar>
+            <ion-buttons>
+                <ion-back-button>
+                    
+                </ion-back-button>
+            </ion-buttons>
+        </ion-toolbar>
     </ion-page>
 </template>
 
