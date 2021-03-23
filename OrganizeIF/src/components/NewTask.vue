@@ -4,7 +4,7 @@
           <h2 class="text-center text-2x1 font-semibold">Nova Tarefa</h2>
       </div>
 
-        <Form class="flex flex-col justify-center h-full">
+        <Form @submit="addTask()" class="flex flex-col justify-center h-full">
             <div>
                 <ion-item>
                     <Field v-slot="{field}" name="taskField" 
@@ -16,7 +16,7 @@
 
                  <ion-item lines="none">
                      <ErrorMessage v-slot="{message}" name="taskField">
-                         <ion-text color="danger" v-if="message"></ion-text>
+                         <ion-text color="danger" v-if="message">{{message}}</ion-text>
                      </ErrorMessage>
                 </ion-item>
 
@@ -34,7 +34,7 @@
                 </ion-item>
                 <ion-item lines="none"> 
                     <ErrorMessage v-slot="{message}" name="duedateField">
-                         <ion-text color="danger" v-if="message"></ion-text>
+                         <ion-text color="danger" v-if="message">{{message}}</ion-text>
                      </ErrorMessage>
                 </ion-item>
 
@@ -46,7 +46,7 @@
                 <ion-item>
                     <ion-icon :icon="grid" color="primary" slot="start"></ion-icon>
                     <ion-label>Categorias</ion-label>
-                    <Field v-model="category" v-slot="{field}" name="categoryField">
+                    <Field v-model="category" :rules="isRequired" v-slot="{field}" name="categoryField">
                         <ion-select v-bind="field" placeholder="Selecione a categoria">
                             <ion-select-option value="Work">Trabalho</ion-select-option>
                             <ion-select-option value="Scheduler">Horário</ion-select-option>
@@ -63,7 +63,7 @@
 
                 <ion-item lines="none">
                     <ErrorMessage v-slot="{message}" name="categoryField">
-                         <ion-text color="danger" v-if="message"></ion-text>
+                         <ion-text color="danger" v-if="message">{{message}}</ion-text>
                      </ErrorMessage>
                 </ion-item>
 
@@ -85,7 +85,7 @@
 
                 <ion-item lines="none">
                     <ErrorMessage v-slot="{message}" name="categoryField">
-                         <ion-text color="danger" v-if="message"></ion-text>
+                         <ion-text color="danger" v-if="message">{{message}}</ion-text>
                      </ErrorMessage>
                 </ion-item>
                     
@@ -102,14 +102,16 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonDatetime, IonTextarea, IonLabel, IonButton } from '@ionic/vue';
+import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonDatetime, IonTextarea, IonLabel, IonButton, IonSelect, IonSelectOption } from '@ionic/vue';
 import {close, notifications, document, grid, thermometerOutline} from "ionicons/icons";
 import { Form, Field, ErrorMessage } from 'vee-validate';
+import firebase from '@/firebase.ts';
+const db = firebase.firestore();
 
 export default defineComponent({
     components:{
         IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonDatetime, IonTextarea, IonLabel, IonButton,
-        Form, Field, ErrorMessage
+        Form, Field, ErrorMessage, IonSelect, IonSelectOption
     },
     setup(){
         const dueDate = ref('');
@@ -125,11 +127,33 @@ export default defineComponent({
         }
 
         function addTask(){
+            db.collection('tasks')
+                .add({
+                    task: task.value,
+                    note: note.value,
+                    dueDate: dueDate.value,
+                    category: category.value,
+                    priority: priority.value,
+                    done: false
+                })
+                .then(()=>{
+                    task.value = "";
+                    dueDate.value = "";
+                    note.value = "";
+                    category.value = "";
+                    priority.value = "";
 
+                    this.$emit('close-modal');
+
+                    console.log('Document sucessfully added!');
+                })
+                .catch((error) => {
+                    console.log("Error na escritura do documento: ", error);
+                })
         }
         return{
             isRequired, task, dueDate, note, grid, thermometerOutline,
-            close, notifications, document, category, priority
+            close, notifications, document, category, priority, addTask
         }
     }
 })
