@@ -1,68 +1,186 @@
 <template>
-  <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
+    <ion-page>
         <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
+            <ion-buttons slot="start">
+                <ion-back-button default-href="/Lists"></ion-back-button>
+            </ion-buttons>
+
+            <ion-icon :icon="ellipsisVertical" slot="end" class="text-2x1"></ion-icon>
         </ion-toolbar>
-      </ion-header>
-    
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
-    </ion-content>
-  </ion-page>
+
+        <ion-content class="overflow-auto">
+            <div class="flex flex-col justify-center items-center mt-2">
+                <div class="text-center">
+                    <ion-icon :icon="home" size="large" style="color:#2DD4BF"></ion-icon>
+                </div>
+
+                <div class="text-center">
+                    <ion-card-title class="text 2x1">Casa</ion-card-title>
+                    <ion-card-subtitle>Atividades e tarefas domicilar</ion-card-subtitle>
+                </div>
+            </div>
+
+            <div>
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Atrasados: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Hoje: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Futuros: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Feito: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+            </div>
+        </ion-content>
+            <div>
+                <ion-fab @click="isOpenNewTask = true" vertical="bottom" horizontal="end" slot="fixed">
+                    <ion-fab-button>
+                        <ion-icon :icon="add"></ion-icon>
+                        </ion-fab-button>
+                    </ion-fab>
+
+                    <ion-modal 
+                        :is-open="isOpenNewTask"
+                        :backdrop-dismiss="false">
+                        
+                        <new-task @closeModal="isOpenNewTask = false"></new-task>    
+                </ion-modal>
+            </div>
+    </ion-page>
 </template>
 
-<script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { defineComponent } from 'vue';
+<script>
+import { defineComponent, ref } from "vue";
+import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
+IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal} from '@ionic/vue';
+import {ellipsisVertical, home, trash, add} from 'ionicons/icons';
+import NewTask from "@/components/NewTask.vue";
 
 export default defineComponent({
-  name: 'Home',
-  components: {
-    IonContent,
-    IonHeader,
-    IonPage,
-    IonTitle,
-    IonToolbar
-  }
-});
+
+    components:{
+        IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding,
+        IonItemOption, IonItemOptions, IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal, NewTask
+    
+    },
+
+    setup(){
+        const isOpenNewTask = ref(false);
+        return {
+            isOpenNewTask,
+            ellipsisVertical, home, trash, add
+        }
+    }
+
+})
 </script>
 
-<style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+<style>
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
 </style>
