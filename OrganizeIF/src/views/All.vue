@@ -138,25 +138,43 @@
                 </ion-list>
             </div>
         </ion-content>
+            <div>
+                <ion-fab @click="isOpenNewTask = true" vertical="bottom" horizontal="end" slot="fixed">
+                    <ion-fab-button>
+                        <ion-icon :icon="add"></ion-icon>
+                        </ion-fab-button>
+                    </ion-fab>
+
+                    <ion-modal 
+                        :is-open="isOpenNewTask"
+                        :backdrop-dismiss="false">
+                        
+                        <new-task @closeModal="isOpenNewTask = false"></new-task>    
+                </ion-modal>
+            </div>
     </ion-page>
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
-IonCheckbox, IonLabel, IonList, IonItem} from '@ionic/vue';
-import {ellipsisVertical, clipboard, trash} from 'ionicons/icons';
+IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal} from '@ionic/vue';
+import {ellipsisVertical, clipboard, trash, add} from 'ionicons/icons';
+import NewTask from "@/components/NewTask.vue";
 
 export default defineComponent({
 
     components:{
         IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding,
-        IonItemOption, IonItemOptions, IonCheckbox, IonLabel, IonList, IonItem
+        IonItemOption, IonItemOptions, IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal, NewTask
+    
     },
 
     setup(){
+        const isOpenNewTask = ref(false);
         return {
-            ellipsisVertical, clipboard, trash
+            isOpenNewTask,
+            ellipsisVertical, clipboard, trash, add
         }
     }
 
