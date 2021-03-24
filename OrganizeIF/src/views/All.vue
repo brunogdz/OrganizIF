@@ -28,9 +28,112 @@
                     </ion-list-header>
 
                     <ion-item-sliding>
-                        <ion-item-options>
-                            <ion-item-option></ion-item-option>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
                         </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Hoje: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Futuros: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Feito: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
                     </ion-item-sliding>
                 </ion-list>
             </div>
@@ -40,19 +143,20 @@
 
 <script>
 import { defineComponent } from "vue";
-import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions} from '@ionic/vue';
-import {ellipsisVertical, clipboard} from 'ionicons/icons';
+import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
+IonCheckbox, IonLabel, IonList, IonItem} from '@ionic/vue';
+import {ellipsisVertical, clipboard, trash} from 'ionicons/icons';
 
 export default defineComponent({
 
     components:{
         IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding,
-        IonItemOption, IonItemOptions
+        IonItemOption, IonItemOptions, IonCheckbox, IonLabel, IonList, IonItem
     },
 
     setup(){
         return {
-            ellipsisVertical, clipboard
+            ellipsisVertical, clipboard, trash
         }
     }
 
