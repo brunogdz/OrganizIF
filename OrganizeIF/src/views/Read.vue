@@ -11,12 +11,12 @@
         <ion-content class="overflow-auto">
             <div class="flex flex-col justify-center items-center mt-2">
                 <div class="text-center">
-                    <ion-icon :icon="cart" size="large" style="color:#115E59"></ion-icon>
+                    <ion-icon :icon="book" size="large" style="#010101"></ion-icon>
                 </div>
 
                 <div class="text-center">
-                    <ion-card-title class="text 2x1">Compras</ion-card-title>
-                    <ion-card-subtitle>Tarefas e Afazeres</ion-card-subtitle>
+                    <ion-card-title class="text 2x1">Leitura</ion-card-title>
+                    <ion-card-subtitle>Leitura em dia</ion-card-subtitle>
                 </div>
             </div>
 
@@ -159,7 +159,7 @@
 import { defineComponent, ref } from "vue";
 import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
 IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal} from '@ionic/vue';
-import {ellipsisVertical, cart, trash, add} from 'ionicons/icons';
+import {ellipsisVertical, book, trash, add} from 'ionicons/icons';
 import NewTask from "@/components/NewTask.vue";
 
 export default defineComponent({
@@ -174,7 +174,7 @@ export default defineComponent({
         const isOpenNewTask = ref(false);
         return {
             isOpenNewTask,
-            ellipsisVertical, cart, trash, add
+            ellipsisVertical, book, trash, add
         }
     }
 

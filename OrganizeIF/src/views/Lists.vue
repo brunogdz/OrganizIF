@@ -2,7 +2,7 @@
     <ion-page>
         <div class="flex w-full flex-col overflow-auto">
             <div class="mt-2">
-                <h1 class="text-4x1 pl-5 font-semibold">Listagem</h1>
+                <h1 class="text-4x1 pl-5 font-semibold"></h1>
             </div>
 
             <div class="flex w-full flex-row flex-wrap justify-around mt-2">
@@ -96,7 +96,7 @@
 
                         <ion-card-content>
                             <ion-card-title class="text-2x1">Leitura</ion-card-title>
-                            <ion-card-subtitle>Tarefas</ion-card-subtitle>
+                            <ion-card-subtitle>Livros interessantes</ion-card-subtitle>
                         </ion-card-content>
 
                     </router-link>
