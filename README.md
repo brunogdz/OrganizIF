@@ -26,6 +26,10 @@ Trying to learn a new technology and see how it goes. I'll try to build this bec
 - [https://codepen.io/demilad/pen/bZRjpb](https://codepen.io/demilad/pen/bZRjpb)
 - [Colors](https://dribbble.com/shots/14590159--Meeting-Modal-Creator)
 
+# How start? Como começar?
+[Ionic](https://ionicframework.com)
+[Ionic + Vue | Angular | React ](https://ionicframework.com/start#basics)
+
 
 ## License
 
