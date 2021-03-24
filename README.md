@@ -27,8 +27,8 @@ Trying to learn a new technology and see how it goes. I'll try to build this bec
 - [Colors](https://dribbble.com/shots/14590159--Meeting-Modal-Creator)
 
 # How start? Como começar?
-[Ionic](https://ionicframework.com)
-[Ionic + Vue | Angular | React ](https://ionicframework.com/start#basics)
+- [Ionic](https://ionicframework.com)
+- [Ionic + Vue | Angular | React ](https://ionicframework.com/start#basics)
 
 
 ## License
