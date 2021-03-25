@@ -9,9 +9,31 @@ const store = createStore({
             year: 'numeric', month: '2-digit', day: '2-digit',
             hour: "2-digit", minute: '2-digit',hourCycle: 'h24'
         },
+        ehHoje: (Data: any) => {
+            const hoje = new Date();
+
+            return Data.getDate() == hoje.getDate()
+            && Data.getMonth() == hoje.getMonth()
+            && Data.getFullYear() == hoje.getFullYear()
+        }
     },
     getters:{
+        hoje: (state) => {
+            return (HojeTarefas: Array<any>) => HojeTarefas.filter((item: any) =>{
+                return state.ehHoje(new Date(item.dueDate)) && item.done == false;
+            })
+        },
+        atrasados: (state) => {
 
+        },
+
+        futuros: (state) => {
+
+        },
+
+        feito: (state) => {
+
+        }
     },
     mutations:{
         getTasks: (state) =>{
