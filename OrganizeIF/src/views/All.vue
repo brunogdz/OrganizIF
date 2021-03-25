@@ -156,7 +156,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref, computed } from "vue";
+import { defineComponent, reactive, ref, computed, onMounted } from "vue";
 import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
 IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal} from '@ionic/vue';
 import {ellipsisVertical, clipboard, trash, add} from 'ionicons/icons';
@@ -175,14 +175,20 @@ export default defineComponent({
         const isOpenNewTask = ref(false);
         const store = useStore();
         const state = reactive({
-
+            tasks: computed(() => {
+                return store.state.tasks;
+            })
         })
 
-        function getTaks(){
+        function getTasks(){
             store.commit('getTasks')
         }
+
+        onMounted(() =>{
+            getTasks();
+        })
         return {
-            isOpenNewTask,
+            isOpenNewTask, store, getTasks,
             ellipsisVertical, clipboard, trash, add
         }
     }

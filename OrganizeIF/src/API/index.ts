@@ -21,7 +21,7 @@ const store = createStore({
                     state.tasks = [];
 
                     querySnapshot.forEach((doc: any) =>{
-                        return state.tasks.push({
+                        state.tasks.push({
                             id: doc.id,
                             task: doc.data().task,
                             dueDate: new Date(doc.data().dueDate).toLocaleDateString('pt-BR'),
