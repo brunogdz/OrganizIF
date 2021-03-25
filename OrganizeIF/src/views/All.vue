@@ -156,11 +156,12 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, reactive, ref, computed } from "vue";
 import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
 IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal} from '@ionic/vue';
 import {ellipsisVertical, clipboard, trash, add} from 'ionicons/icons';
 import NewTask from "@/components/NewTask.vue";
+import {useStore} from 'vuex';
 
 export default defineComponent({
 
@@ -172,6 +173,14 @@ export default defineComponent({
 
     setup(){
         const isOpenNewTask = ref(false);
+        const store = useStore();
+        const state = reactive({
+
+        })
+
+        function getTaks(){
+            store.commit('getTasks')
+        }
         return {
             isOpenNewTask,
             ellipsisVertical, clipboard, trash, add

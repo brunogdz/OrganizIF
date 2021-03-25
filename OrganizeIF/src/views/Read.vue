@@ -11,7 +11,7 @@
         <ion-content class="overflow-auto">
             <div class="flex flex-col justify-center items-center mt-2">
                 <div class="text-center">
-                    <ion-icon :icon="book" size="large" style="#010101"></ion-icon>
+                    <ion-icon :icon="book" size="large" style="color:#fcba03"></ion-icon>
                 </div>
 
                 <div class="text-center">

@@ -91,7 +91,7 @@
                     <router-link :to="{name: 'Read'}">
                         <ion-card-header>
 
-                            <ion-icon :icon="book" size="large" style="#010101"></ion-icon>
+                            <ion-icon :icon="book" size="large" style="color:#fcba03"></ion-icon>
                         </ion-card-header>
 
                         <ion-card-content>
@@ -153,8 +153,8 @@
 
                     <router-link :to="{name: 'Ideas'}">
                         <ion-card-header>
-
-                            <ion-icon :icon="bulb" size="large" style="#201EE9"></ion-icon>
+                            <!-- style="#201EE9" -->
+                            <ion-icon :icon="bulb" size="large" style="color:#0DFF00"></ion-icon>
                         </ion-card-header>
 
                         <ion-card-content>

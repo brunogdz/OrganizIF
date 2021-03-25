@@ -26,9 +26,12 @@ import './theme/variables.css';
 /* Tailwindcss */
 import '../public/assets/css/style.css';
 
+import store from './API/index';
+
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(store);
   
 router.isReady().then(() => {
   app.mount('#app');
