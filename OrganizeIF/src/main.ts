@@ -26,7 +26,7 @@ import './theme/variables.css';
 /* Tailwindcss */
 import '../public/assets/css/style.css';
 
-import store from './API/index';
+import store from './store/index';
 
 const app = createApp(App)
   .use(IonicVue)

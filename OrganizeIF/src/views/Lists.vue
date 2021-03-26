@@ -47,7 +47,7 @@
                         </ion-card-header>
 
                         <ion-card-content>
-                            <ion-card-title class="text-2x1">Horário</ion-card-title>
+                            <ion-card-title class="text-2x1">Rotina</ion-card-title>
                             <ion-card-subtitle>Montar o seu horário</ion-card-subtitle>
                         </ion-card-content>
 

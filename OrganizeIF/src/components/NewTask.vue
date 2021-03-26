@@ -29,7 +29,7 @@
                         <ion-datetime v-bind="field" v-model="dueDate"
                         display-format="DD-MM-YYYY HH:mm"
                         display-timezone="utc"
-                        value="2021-11-11T00:56:44.646-03:00" max="2025-12-31"></ion-datetime>
+                        value="2021-11-11T00:56:44.646-03:00" max="2027-12-31"></ion-datetime>
                     </Field>
                 </ion-item>
                 <ion-item lines="none"> 
