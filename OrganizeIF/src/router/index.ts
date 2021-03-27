@@ -11,6 +11,7 @@ import Scheduler from '../views/Scheduler.vue';
 import Shopping from '../views/Shopping.vue';
 import Study from '../views/Study.vue';
 import Travel from '../views/Travel.vue';
+import PageTeste from '../views/PageTeste.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -71,6 +72,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/travel',
     name: 'Travel',
     component: Travel
+  },
+  {
+    path: '/pageteste',
+    name: 'PageTeste',
+    component: PageTeste
   }
 ]
 

@@ -2,6 +2,7 @@ import { createStore } from 'vuex';
 
 import firebase from '@/firebase'
 const db = firebase.firestore();
+
 const store = createStore({
 
     state:{

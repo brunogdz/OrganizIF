@@ -72,9 +72,9 @@
                     <ion-label>Prioridade</ion-label>
                     <Field v-model="priority" v-slot="{field}" name="priorityField">
                         <ion-select v-bind="field" placeholder="Escolha a prioridade">
-                            <ion-select-option value="red" class="danger-priority">Alta</ion-select-option>
-                            <ion-select-option value="yellow" class="warning-priority">Média</ion-select-option>
-                            <ion-select-option value="green" class="sucess-priority">Baixa</ion-select-option>
+                            <ion-select-option value="Alta Prioridade" color="danger" class="danger-priority">Alta</ion-select-option>
+                            <ion-select-option value="Média Prioridade" class="warning-priority">Média</ion-select-option>
+                            <ion-select-option value="Baixa Prioridade" class="sucess-priority">Baixa</ion-select-option>
                             <!-- <ion-button color="success">Success</ion-button>
                             <ion-button color="warning">Warning</ion-button>
                             <ion-button color="danger">Danger</ion-button> -->

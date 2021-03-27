@@ -164,6 +164,22 @@
 
                     </router-link>
             </ion-card>
+
+            <ion-card class="w-2/5">
+
+                    <router-link :to="{name: 'PageTeste'}">
+                        <ion-card-header>
+
+                            <ion-icon :icon="cart" size="large" style="color:#123456"></ion-icon>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <ion-card-title class="text-2x1">Pagina teste</ion-card-title>
+                            <ion-card-subtitle>Anotações</ion-card-subtitle>
+                        </ion-card-content>
+
+                    </router-link>
+            </ion-card>
                 
             </div>
 

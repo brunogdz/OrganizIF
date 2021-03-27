@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="text-center">
-                    <ion-card-title class="text-2xl">All</ion-card-title>
+                    <ion-card-title class="text-2xl">Todos</ion-card-title>
                     <ion-card-subtitle>{{state.tasks.length}} Tasks</ion-card-subtitle>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     <ion-list-header>
                         <ion-label>Atrasados <span class="text-gray-600 text-base">{{state.late.length}}</span></ion-label>
                     </ion-list-header>
-                    <ion-item-sliding v-for="item in state.late" :key="item.id">
+                    <ion-item-sliding v-for="item in state.late" :key="item.id" color="danger">
                         <ion-item-options side="start">
                             <ion-item-option @click="deleteTask(item)" color="danger" expandable>
                                 <ion-icon :icon="trash" size="large"></ion-icon>
@@ -34,7 +34,8 @@
                         <ion-item detail="true">
                             <ion-label>
                                 <h2>{{item.task}}</h2>
-                                <p style="color:red">{{item.dueDate}}</p>
+                                <p>{{item.dueDate}}</p>
+                                <ion-badge color="danger">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
                         <ion-item-options side="end">
@@ -59,6 +60,7 @@
                             <ion-label>
                                 <h2>{{item.task}}</h2>
                                 <p>{{item.dueDate}}</p>
+                                <ion-badge color="warning">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
                         <ion-item-options side="end">
@@ -71,7 +73,7 @@
                 </ion-list>
                 <ion-list>
                     <ion-list-header>
-                        <ion-label>Later <span class="text-gray-600 text-base">{{state.later.length}}</span></ion-label>
+                        <ion-label>Futuros <span class="text-gray-600 text-base">{{state.later.length}}</span></ion-label>
                     </ion-list-header>
                     <ion-item-sliding v-for="item in state.later" :key="item.id">
                         <ion-item-options side="start">
@@ -83,6 +85,7 @@
                             <ion-label>
                                 <h2>{{item.task}}</h2>
                                 <p>{{item.dueDate}}</p>
+                                 <ion-badge color="success">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
                         <ion-item-options side="end">
@@ -95,7 +98,7 @@
                 </ion-list>
                 <ion-list>
                     <ion-list-header>
-                        <ion-label>Done <span class="text-gray-600 text-base">{{state.done.length}}</span></ion-label>
+                        <ion-label>Concluidos <span class="text-gray-600 text-base">{{state.done.length}}</span></ion-label>
                     </ion-list-header>
                     <ion-item-sliding v-for="item in state.done" :key="item.id">
                         <ion-item-options side="start">
@@ -107,6 +110,7 @@
                             <ion-label>
                                 <h2 style="color:#3490dc"><s>{{item.task}}</s></h2>
                                 <p><s>{{item.dueDate}}</s></p>
+                                <ion-badge color="primary">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
                         <ion-item-options side="end">
@@ -137,7 +141,20 @@
     </ion-page>
 </template>
 
+
+
 <script>
+
+// const formatter = new Intl.DateTimeFormat('pt-BR', {
+//     day: 'numeric',
+//     month: 'long',
+//     year: 'numeric',
+//     hour: "2-digit", minute: '2-digit'
+
+// })
+
+
+
 import {defineComponent, reactive, ref, computed, onMounted} from 'vue';
 import { IonPage, IonToolbar,IonButtons,IonBackButton,IonIcon, IonContent,
 IonCardTitle,IonCardSubtitle,IonListHeader,IonItemSliding,IonItemOptions,IonItemOption,
