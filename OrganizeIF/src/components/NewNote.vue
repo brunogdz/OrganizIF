@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from '@vue/composition-api';
+import { defineComponent, ref } from 'vue';
 import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonTextarea, IonButton } from '@ionic/vue';
 import {close, document, grid, thermometerOutline} from "ionicons/icons";
 import { Form, Field, ErrorMessage } from 'vee-validate';

@@ -1,0 +1,186 @@
+<template>
+    <ion-page>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-back-button default-href="/Lists"></ion-back-button>
+            </ion-buttons>
+
+            <ion-icon :icon="ellipsisVertical" slot="end" class="text-2x1"></ion-icon>
+        </ion-toolbar>
+
+        <ion-content class="overflow-auto">
+            <div class="flex flex-col justify-center items-center mt-2">
+                <div class="text-center">
+                    <ion-icon :icon="headset" size="large" class="text-indigo-400"></ion-icon>
+                </div>
+
+                <div class="text-center">
+                    <ion-card-title class="text 2x1">Musicas</ion-card-title>
+                    <ion-card-subtitle>Tarefas musicais</ion-card-subtitle>
+                </div>
+            </div>
+
+            <div>
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Atrasados: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Hoje: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Futuros: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+
+                <ion-list>
+                    <ion-list-header>
+                        <ion-label>Feito: <span class="text-gray-600 text-base">0</span>
+                        </ion-label>
+                    </ion-list-header>
+
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option color="danger" expandable>
+                                <ion-icon :icon="trash" size="large"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item detail="true">
+                            <ion-label>
+                                <h2></h2>
+                                <p style="color:red"></p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item-options side="end">
+                                <ion-item-option color="primary" expandable>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item-option>
+                        </ion-item-options>
+                        
+                    </ion-item-sliding>
+                </ion-list>
+            </div>
+        </ion-content>
+            <div>
+                <ion-fab @click="isOpenNewNote = true" vertical="bottom" horizontal="end" slot="fixed">
+                    <ion-fab-button>
+                        <ion-icon :icon="add"></ion-icon>
+                        </ion-fab-button>
+                    </ion-fab>
+
+                    <ion-modal 
+                        :is-open="isOpenNewNote"
+                        :backdrop-dismiss="false">
+                        
+                        <new-note @closeModal="isOpenNewNote = false"></new-note>    
+                </ion-modal>
+            </div>
+    </ion-page>
+</template>
+
+<script>
+import { defineComponent, ref } from "vue";
+import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
+IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal} from '@ionic/vue';
+import {ellipsisVertical, headset, trash, add} from 'ionicons/icons';
+import NewNote from "@/components/NewNote.vue";
+
+export default defineComponent({
+
+    components:{
+        IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding,
+        IonItemOption, IonItemOptions, IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal, NewNote
+    
+    },
+
+    setup(){
+        const isOpenNewNote = ref(false);
+        return {
+            isOpenNewNote,
+            ellipsisVertical, headset, trash, add
+        }
+    }
+
+})
+</script>
+
+<style>
+
+</style>
