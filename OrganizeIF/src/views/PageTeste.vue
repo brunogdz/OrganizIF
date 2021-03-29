@@ -15,30 +15,45 @@
                 </div>
 
                 <div class="text-center">
-                    <ion-card-title class="text 2x1">Musicas</ion-card-title>
-                    <ion-card-subtitle>Tarefas musicais</ion-card-subtitle>
+                    <ion-card-title class="text 2x1">Notas</ion-card-title>
+                    <ion-card-subtitle>Aqui você vê todas as notas que você criou</ion-card-subtitle>
                 </div>
             </div>
 
-            <div>
+            <div class="flex w-full flex-col flex-wrap justify-around overflow-auto mt-2">
                 <ion-list>
                     <ion-list-header>
-                        <ion-label>Atrasados: <span class="text-gray-600 text-base">0</span>
+                        <ion-label>Notas criadas:  <span class="text-gray-600 text-base">{{state.notes.length}}</span>
                         </ion-label>
                     </ion-list-header>
-
-                    <ion-item-sliding>
+                    
+                    <ion-item-sliding v-for="item in state.notes" :key="item.id" color="danger">
                         <ion-item-options side="start">
-                            <ion-item-option color="danger" expandable>
+                            <ion-item-option @click="deleteNote(item)" color="danger" expandable>
                                 <ion-icon :icon="trash" size="large"></ion-icon>
                             </ion-item-option>
                         </ion-item-options>
 
-                        <ion-item detail="true">
-                            <ion-label>
-                                <h2></h2>
+                        <ion-item  >
+                            <!-- v-for="itens in colors" v-on="selected = {{item.detail}}" v-bind="{selected: selected == item}" -->
+                            <!-- v-for="obj of state.notes" :key="obj.detail" :color="{obj}" -->
+                            <ion-card class="item-inner" v-bind:style="{'background-color':mudarcor(item)}">
+                                
+                                <ion-card-header>
+                                    <ion-card-title>{{item.note}}</ion-card-title>
+                                    <ion-card-subtitle>{{item.subtitle}}</ion-card-subtitle>
+                                </ion-card-header>
+                                <ion-card-content>
+                                    <p>{{item.detail}}</p>
+                                </ion-card-content>
+                                
+                            </ion-card>
+                            
+                            <!-- <ion-label>
+                                <h2>{{item.note}}</h2>
+                                <p>{{item.detail}}</p>
                                 <p style="color:red"></p>
-                            </ion-label>
+                            </ion-label> -->
                         </ion-item>
 
                         <ion-item-options side="end">
@@ -50,92 +65,7 @@
                     </ion-item-sliding>
                 </ion-list>
 
-                <ion-list>
-                    <ion-list-header>
-                        <ion-label>Hoje: <span class="text-gray-600 text-base">0</span>
-                        </ion-label>
-                    </ion-list-header>
-
-                    <ion-item-sliding>
-                        <ion-item-options side="start">
-                            <ion-item-option color="danger" expandable>
-                                <ion-icon :icon="trash" size="large"></ion-icon>
-                            </ion-item-option>
-                        </ion-item-options>
-
-                        <ion-item detail="true">
-                            <ion-label>
-                                <h2></h2>
-                                <p style="color:red"></p>
-                            </ion-label>
-                        </ion-item>
-
-                        <ion-item-options side="end">
-                                <ion-item-option color="primary" expandable>
-                                    <ion-checkbox></ion-checkbox>
-                                </ion-item-option>
-                        </ion-item-options>
-                        
-                    </ion-item-sliding>
-                </ion-list>
-
-                <ion-list>
-                    <ion-list-header>
-                        <ion-label>Futuros: <span class="text-gray-600 text-base">0</span>
-                        </ion-label>
-                    </ion-list-header>
-
-                    <ion-item-sliding>
-                        <ion-item-options side="start">
-                            <ion-item-option color="danger" expandable>
-                                <ion-icon :icon="trash" size="large"></ion-icon>
-                            </ion-item-option>
-                        </ion-item-options>
-
-                        <ion-item detail="true">
-                            <ion-label>
-                                <h2></h2>
-                                <p style="color:red"></p>
-                            </ion-label>
-                        </ion-item>
-
-                        <ion-item-options side="end">
-                                <ion-item-option color="primary" expandable>
-                                    <ion-checkbox></ion-checkbox>
-                                </ion-item-option>
-                        </ion-item-options>
-                        
-                    </ion-item-sliding>
-                </ion-list>
-
-                <ion-list>
-                    <ion-list-header>
-                        <ion-label>Feito: <span class="text-gray-600 text-base">0</span>
-                        </ion-label>
-                    </ion-list-header>
-
-                    <ion-item-sliding>
-                        <ion-item-options side="start">
-                            <ion-item-option color="danger" expandable>
-                                <ion-icon :icon="trash" size="large"></ion-icon>
-                            </ion-item-option>
-                        </ion-item-options>
-
-                        <ion-item detail="true">
-                            <ion-label>
-                                <h2></h2>
-                                <p style="color:red"></p>
-                            </ion-label>
-                        </ion-item>
-
-                        <ion-item-options side="end">
-                                <ion-item-option color="primary" expandable>
-                                    <ion-checkbox></ion-checkbox>
-                                </ion-item-option>
-                        </ion-item-options>
-                        
-                    </ion-item-sliding>
-                </ion-list>
+                
             </div>
         </ion-content>
             <div>
@@ -156,11 +86,16 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
 IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal} from '@ionic/vue';
 import {ellipsisVertical, headset, trash, add} from 'ionicons/icons';
 import NewNote from "@/components/NewNote.vue";
+import {useStore} from 'vuex';
+
+// data: {
+//     color: 'warning', 'danger'
+// }
 
 export default defineComponent({
 
@@ -169,12 +104,62 @@ export default defineComponent({
         IonItemOption, IonItemOptions, IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal, NewNote
     
     },
-
-    setup(){
-        const isOpenNewNote = ref(false);
+    data(){
         return {
-            isOpenNewNote,
-            ellipsisVertical, headset, trash, add
+            selected: 'primary',
+            colors: ['warning','danger']
+        }
+    },
+    setup(){
+       function mudarcor(item){
+               const result = [];
+               console.log(item.noteColor)
+               if(item.noteColor == 'azul'){
+                   console.log("É primary")
+                   result.push('#1565C0');
+               }else if( item.noteColor == 'amarelo'){
+                   result.push('#FBC02D')
+               }else if(item.noteColor == 'verde'){
+                   result.push('#558B2F')
+               }else if(item.noteColor == 'roxo'){
+                   result.push('#4527A0')
+               }else if(item.noteColor == 'laranja'){
+                   result.push('#E64A19')
+               }else{
+                   result.push('#455A64')
+               }
+               return result;
+        }
+       
+       
+
+        const isOpenNewNote = ref(false);
+        const store = useStore();
+        const state = reactive({
+            notes: computed(() => {
+                return store.state.notes;
+            })
+        })
+        function getNotes(){
+            store.commit('getNotes');
+        }
+        function doneNote(item) {
+            store.commit('doneNote',item);
+        }
+        function notDoneNote(item) {
+            store.commit('notDoneNote',item);
+        }
+        function deleteNote(item) {
+            store.commit('deleteNote',item);
+        }
+        onMounted(()=>{
+            if(store.state.tasks.length == 0){
+                getNotes();
+            }
+        })
+        return {
+            isOpenNewNote, mudarcor,
+            ellipsisVertical, headset, trash, add, store, state, getNotes, doneNote, notDoneNote, deleteNote
         }
     }
 
@@ -182,5 +167,4 @@ export default defineComponent({
 </script>
 
 <style>
-
 </style>

@@ -6,6 +6,8 @@ const db = firebase.firestore();
 const store = createStore({
 
     state:{
+        notes: Array<any>(),
+
         tasks: Array<any>(),
         options:{
             year: "numeric", month: "short", day: "numeric",
@@ -18,7 +20,9 @@ const store = createStore({
             return DataF.getDate() == dat.getDate() 
             && DataF.getMonth() == dat.getMonth()
             && DataF.getFullYear() == dat.getFullYear()
-        }
+        },
+
+        
 
     },
     getters:{
@@ -80,13 +84,15 @@ const store = createStore({
                         note: doc.data().note,
                         done: doc.data().done
                     });
-
+                    
                     console.log(doc.id, " => ", doc.data());
+
                   })
+                  
               })  
 
         },
-
+        
         doneTask: (state, payload: any) => {
             if (payload.done == false) {
                 
@@ -129,6 +135,77 @@ const store = createStore({
                .then(() => {
                    console.log('Task deleted');
                }) 
+        },
+
+        getNotes: (state) => {
+            state.notes = [];
+            db.collection('notes')
+            .onSnapshot((querySnapshot: any) => {
+                state.notes = [];
+
+                querySnapshot.forEach((doc: any) =>{
+                    state.notes.push({ 
+                        id: doc.id,
+                        note: doc.data().note,
+                        detail: doc.data().detail,
+                        subtitle: doc.data().subtitle,
+                        noteColor: doc.data().noteColor,
+                        createdAt: new Date(doc.data().createdAt).toLocaleDateString('pt-BR', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                          }),
+                        done: doc.data().done
+
+                    });
+
+                    console.log(doc.id, "=>", doc.data());
+                })
+            })
+        },
+
+        deleteNote: (state, payload: any) => {
+
+            db.collection('notes')
+               .doc(payload.id)
+               .delete()
+               .then(() => {
+                   console.log('Note deleted');
+               }) 
+        },
+
+        doneNote: (state, payload: any) => {
+            if (payload.done == false) {
+                
+                db.collection('notes')
+                  .doc(payload.id)
+                  .update({
+                      done: true
+                  })
+                  .then(() => {
+                      console.log('notes done');
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  })  
+            }
+        },
+
+        notDoneNote: (state, payload: any) => {
+            if (payload.done == true) {
+                
+                db.collection('notes')
+                  .doc(payload.id)
+                  .update({
+                      done: false
+                  })
+                  .then(() => {
+                      console.log('notes not done');
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  })  
+            }
         }
     }
 });

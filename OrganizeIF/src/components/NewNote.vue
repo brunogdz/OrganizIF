@@ -24,10 +24,38 @@
 
             <div>
                 <ion-item>
+                    <ion-icon :icon="informationCircle" color="primary" slot="start"></ion-icon>
+                    <ion-textarea v-model="subtitle" placeholder="Coloque aqui um subtítulo"></ion-textarea>
+                </ion-item>
+            </div>
+
+            <div>
+                <ion-item>
                     <ion-icon :icon="document" color="primary" slot="start"></ion-icon>
                     <ion-textarea v-model="detail" placeholder="Coloque aqui os detalhes"></ion-textarea>
                 </ion-item>
             </div>
+            
+                <ion-item>
+                    <ion-icon :icon="brushOutline" color="primary" slot="start"></ion-icon>
+                    <ion-label>Cor</ion-label>
+                    <Field v-model="noteColor" :rules="isRequired" v-slot="{field}" name="noteColorField">
+                        <ion-select v-bind="field"  placeholder="Escolha a cor da nota:">
+                            <ion-select-option value="azul" >Azul</ion-select-option>
+                            <ion-select-option value="amarelo" >Amarelo</ion-select-option>
+                            <ion-select-option value="verde" >Verde</ion-select-option>
+                            <ion-select-option value="roxo" >Roxo</ion-select-option>
+                            <ion-select-option value="laranja" >Laranja</ion-select-option>
+                            <ion-select-option value="cinza" >Cinza</ion-select-option>
+                        </ion-select>
+                    </Field>  
+                </ion-item>
+            
+                <ion-item lines="none">
+                    <ErrorMessage v-slot="{message}" name="noteColorField">
+                         <ion-text color="danger" v-if="message">{{message}}</ion-text>
+                     </ErrorMessage>
+                </ion-item>
 
             <div>
                     <ion-button expand="block" type="submit">Criar</ion-button>
@@ -42,9 +70,10 @@
 <script>
 import { defineComponent, ref } from 'vue';
 import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonTextarea, IonButton } from '@ionic/vue';
-import {close, document, grid, thermometerOutline} from "ionicons/icons";
+import {close, document, grid, thermometerOutline, informationCircle, brushOutline} from "ionicons/icons";
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import firebase from '@/firebase.ts';
+import { timestamp } from '@/firebase';
 const db = firebase.firestore();
 
 export default defineComponent({
@@ -55,6 +84,9 @@ export default defineComponent({
     setup() {
         const note = ref('');
         const detail = ref('');
+        const createdAt = ref('');
+        const subtitle = ref('');
+        const noteColor = ref('');
         const isRequired = (value) => {
             if(!value){
                 return 'Esse campo é preciso preencher';
@@ -67,11 +99,18 @@ export default defineComponent({
                 .add({
                     note: note.value,
                     detail: detail.value,
+                    subtitle: subtitle.value,
+                    noteColor: noteColor.value,
+                    createdAt: timestamp(),
                     done: false
                 })
                 .then(() =>{
                     note.value = "";
                     detail.value = "";
+                    subtitle.value = "";
+                    noteColor.value = "";
+                    createdAt.value = "";
+                    
 
                     this.$emit('close-modal');
 
@@ -83,7 +122,7 @@ export default defineComponent({
         }
 
         return{
-            close, document, grid, thermometerOutline, addNote, isRequired, note, detail
+            close, document, grid, brushOutline, thermometerOutline, addNote, isRequired, note, detail, createdAt, subtitle, informationCircle, noteColor
         }
         
     },

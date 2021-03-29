@@ -31,11 +31,11 @@
                                 <ion-icon :icon="trash" size="large"></ion-icon>
                             </ion-item-option>
                         </ion-item-options>
-                        <ion-item detail="true">
-                            <ion-label>
+                        <ion-item detail="true" >
+                            <ion-label class="item-inner" v-bind:style="{'background-color':mudarcor(item)}">
                                 <h2>{{item.task}}</h2>
                                 <p>{{item.dueDate}}</p>
-                                <ion-badge color="danger">{{item.priority}}</ion-badge>
+                                <ion-badge color="new">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
                         <ion-item-options side="end">
@@ -57,10 +57,10 @@
                             </ion-item-option>
                         </ion-item-options>
                         <ion-item detail="true">
-                            <ion-label>
+                            <ion-label class="item-inner" v-bind:style="{'background-color':mudarcor(item)}">
                                 <h2>{{item.task}}</h2>
                                 <p>{{item.dueDate}}</p>
-                                <ion-badge color="warning">{{item.priority}}</ion-badge>
+                                <ion-badge color="new">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
                         <ion-item-options side="end">
@@ -82,10 +82,10 @@
                             </ion-item-option>
                         </ion-item-options>
                         <ion-item detail="true">
-                            <ion-label>
+                            <ion-label class="item-inner" v-bind:style="{'background-color':mudarcor(item)}">
                                 <h2>{{item.task}}</h2>
                                 <p>{{item.dueDate}}</p>
-                                 <ion-badge color="success">{{item.priority}}</ion-badge>
+                                 <ion-badge color="new">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
                         <ion-item-options side="end">
@@ -110,7 +110,7 @@
                             <ion-label>
                                 <h2 style="color:#3490dc"><s>{{item.task}}</s></h2>
                                 <p><s>{{item.dueDate}}</s></p>
-                                <ion-badge color="primary">{{item.priority}}</ion-badge>
+                                <ion-badge color="new">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
                         <ion-item-options side="end">
@@ -171,6 +171,20 @@ export default defineComponent({
        NewTask  
     },
     setup(){
+
+        function mudarcor(item){
+               const result = [];
+               console.log(item.detail)
+               if(item.priority == 'Baixa Prioridade'){
+                   console.log("É primary")
+                   result.push('#2E7D32');
+               }else if(item.priority == 'Média Prioridade'){
+                   result.push('#F57F17')
+               }else{
+                   result.push('#C62828')
+               }
+               return result;
+        }
         const isOpenNewTask = ref(false);
         const store = useStore();    
         const state = reactive({
@@ -210,11 +224,29 @@ export default defineComponent({
         })
         return{
             isOpenNewTask,store,getTasks,state,doneTask,notDoneTask,deleteTask,
-            ellipsisVertical,clipboard,trash,add
+            ellipsisVertical,clipboard,trash,add, mudarcor
         }
     }
 })
 </script>
 
 <style>
+:root {
+  --ion-color-new: #00ACC1;
+  --ion-color-new-rgb: 0,172,193;
+  --ion-color-new-contrast: #ffffff;
+  --ion-color-new-contrast-rgb: 255,255,255;
+  --ion-color-new-shade: #0097aa;
+  --ion-color-new-tint: #1ab4c7;
+}
+
+.ion-color-new {
+  --ion-color-base: var(--ion-color-new);
+  --ion-color-base-rgb: var(--ion-color-new-rgb);
+  --ion-color-contrast: var(--ion-color-new-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-new-contrast-rgb);
+  --ion-color-shade: var(--ion-color-new-shade);
+  --ion-color-tint: var(--ion-color-new-tint);
+}
+
 </style>
