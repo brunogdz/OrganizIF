@@ -35,11 +35,11 @@
                     <ion-textarea v-model="detail" placeholder="Coloque aqui os detalhes"></ion-textarea>
                 </ion-item>
             </div>
-            
+            <div>
                 <ion-item>
                     <ion-icon :icon="brushOutline" color="primary" slot="start"></ion-icon>
                     <ion-label>Cor</ion-label>
-                    <Field v-model="noteColor" :rules="isRequired" v-slot="{field}" name="noteColorField">
+                    <Field v-model="noteColor" v-slot="{field}" name="noteColorField">
                         <ion-select v-bind="field"  placeholder="Escolha a cor da nota:">
                             <ion-select-option value="azul" >Azul</ion-select-option>
                             <ion-select-option value="amarelo" >Amarelo</ion-select-option>
@@ -50,12 +50,8 @@
                         </ion-select>
                     </Field>  
                 </ion-item>
+            </div>
             
-                <ion-item lines="none">
-                    <ErrorMessage v-slot="{message}" name="noteColorField">
-                         <ion-text color="danger" v-if="message">{{message}}</ion-text>
-                     </ErrorMessage>
-                </ion-item>
 
             <div>
                     <ion-button expand="block" type="submit">Criar</ion-button>
@@ -69,7 +65,7 @@
 
 <script>
 import { defineComponent, ref } from 'vue';
-import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonTextarea, IonButton } from '@ionic/vue';
+import { IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonTextarea, IonButton, IonSelect, IonSelectOption, IonLabel} from '@ionic/vue';
 import {close, document, grid, thermometerOutline, informationCircle, brushOutline} from "ionicons/icons";
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import firebase from '@/firebase.ts';
@@ -78,8 +74,8 @@ const db = firebase.firestore();
 
 export default defineComponent({
     components:{
-        IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonTextarea, IonButton,
-        Form, Field, ErrorMessage
+        IonPage, IonFab, IonIcon, IonItem, IonInput, IonText, IonTextarea, IonLabel, IonButton,
+        Form, Field, ErrorMessage, IonSelect, IonSelectOption
     },
     setup() {
         const note = ref('');

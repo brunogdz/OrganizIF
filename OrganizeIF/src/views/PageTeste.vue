@@ -11,7 +11,7 @@
         <ion-content class="overflow-auto">
             <div class="flex flex-col justify-center items-center mt-2">
                 <div class="text-center">
-                    <ion-icon :icon="headset" size="large" class="text-indigo-400"></ion-icon>
+                    <ion-icon :icon="bookmark" size="large" class="text-indigo-400"></ion-icon>
                 </div>
 
                 <div class="text-center">
@@ -89,7 +89,7 @@
 import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
 IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal} from '@ionic/vue';
-import {ellipsisVertical, headset, trash, add} from 'ionicons/icons';
+import {ellipsisVertical, headset, trash, add, bookmark} from 'ionicons/icons';
 import NewNote from "@/components/NewNote.vue";
 import {useStore} from 'vuex';
 
@@ -158,7 +158,7 @@ export default defineComponent({
             }
         })
         return {
-            isOpenNewNote, mudarcor,
+            isOpenNewNote, mudarcor, bookmark,
             ellipsisVertical, headset, trash, add, store, state, getNotes, doneNote, notDoneNote, deleteNote
         }
     }
