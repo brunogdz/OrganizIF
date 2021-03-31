@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="flex w-full flex-col flex-wrap justify-around overflow-auto mt-2">
                 <ion-list>
                     <ion-list-header>
                         <ion-label>Atrasados <span class="text-gray-600 text-base">{{state.late.length}}</span></ion-label>
