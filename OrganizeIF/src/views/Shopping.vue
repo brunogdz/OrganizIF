@@ -23,27 +23,28 @@
             <div>
                 <ion-list>
                     <ion-list-header>
-                        <ion-label>Atrasados: <span class="text-gray-600 text-base">0</span>
+                        <ion-label>Atrasados: <span class="text-gray-600 text-base">{{state.late.length}}</span>
                         </ion-label>
                     </ion-list-header>
 
-                    <ion-item-sliding>
+                    <ion-item-sliding v-for="item in state.late" :key="item.id">
                         <ion-item-options side="start">
-                            <ion-item-option color="danger" expandable>
+                            <ion-item-option @click="deleteTask(item)" color="danger" expandable>
                                 <ion-icon :icon="trash" size="large"></ion-icon>
                             </ion-item-option>
                         </ion-item-options>
 
                         <ion-item detail="true">
-                            <ion-label>
-                                <h2></h2>
-                                <p style="color:red"></p>
+                            <ion-label class="item-inner" v-bind:style="{'background-color':mudarcor(item)}">
+                                <h2>{{item.task}}</h2>
+                                <p>{{item.dueDate}}</p>
+                                <ion-badge color="new">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
 
                         <ion-item-options side="end">
-                                <ion-item-option color="primary" expandable>
-                                    <ion-checkbox></ion-checkbox>
+                                <ion-item-option @click="doneTask(item)" color="primary" expandable>
+                                    <ion-checkbox :checked="item.done"></ion-checkbox>
                                 </ion-item-option>
                         </ion-item-options>
                         
@@ -52,28 +53,29 @@
 
                 <ion-list>
                     <ion-list-header>
-                        <ion-label>Hoje: <span class="text-gray-600 text-base">0</span>
+                        <ion-label>Hoje: <span class="text-gray-600 text-base">{{state.today.length}}</span>
                         </ion-label>
                     </ion-list-header>
 
-                    <ion-item-sliding>
+                    <ion-item-sliding v-for="item in state.today" :key="item.id">
                         <ion-item-options side="start">
-                            <ion-item-option color="danger" expandable>
+                            <ion-item-option @click="deleteTask(item)" color="danger" expandable>
                                 <ion-icon :icon="trash" size="large"></ion-icon>
                             </ion-item-option>
                         </ion-item-options>
 
                         <ion-item detail="true">
-                            <ion-label>
-                                <h2></h2>
-                                <p style="color:red"></p>
+                            <ion-label class="item-inner" v-bind:style="{'background-color':mudarcor(item)}">
+                                <h2>{{item.task}}</h2>
+                                <p>{{item.dueDate}}</p>
+                                <ion-badge color="new">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
 
                         <ion-item-options side="end">
-                                <ion-item-option color="primary" expandable>
-                                    <ion-checkbox></ion-checkbox>
-                                </ion-item-option>
+                            <ion-item-option @click="doneTask(item)" color="primary" expandable>
+                                <ion-checkbox :checked="item.done"></ion-checkbox>
+                            </ion-item-option>
                         </ion-item-options>
                         
                     </ion-item-sliding>
@@ -81,28 +83,29 @@
 
                 <ion-list>
                     <ion-list-header>
-                        <ion-label>Futuros: <span class="text-gray-600 text-base">0</span>
+                        <ion-label>Futuros: <span class="text-gray-600 text-base">{{state.later.length}}</span>
                         </ion-label>
                     </ion-list-header>
 
-                    <ion-item-sliding>
+                    <ion-item-sliding v-for="item in state.later" :key="item.id">
                         <ion-item-options side="start">
-                            <ion-item-option color="danger" expandable>
+                            <ion-item-option @click="deleteTask(item)" color="danger" expandable>
                                 <ion-icon :icon="trash" size="large"></ion-icon>
                             </ion-item-option>
                         </ion-item-options>
 
                         <ion-item detail="true">
-                            <ion-label>
-                                <h2></h2>
-                                <p style="color:red"></p>
+                            <ion-label class="item-inner" v-bind:style="{'background-color':mudarcor(item)}">
+                                <h2>{{item.task}}</h2>
+                                <p>{{item.dueDate}}</p>
+                                <ion-badge color="new">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
 
                         <ion-item-options side="end">
-                                <ion-item-option color="primary" expandable>
-                                    <ion-checkbox></ion-checkbox>
-                                </ion-item-option>
+                            <ion-item-option @click="doneTask(item)" color="primary" expandable>
+                                <ion-checkbox :checked="item.done"></ion-checkbox>
+                            </ion-item-option>
                         </ion-item-options>
                         
                     </ion-item-sliding>
@@ -110,28 +113,29 @@
 
                 <ion-list>
                     <ion-list-header>
-                        <ion-label>Feito: <span class="text-gray-600 text-base">0</span>
+                        <ion-label>Feito: <span class="text-gray-600 text-base">{{state.done.length}}</span>
                         </ion-label>
                     </ion-list-header>
 
-                    <ion-item-sliding>
+                    <ion-item-sliding v-for="item in state.done" :key="item.id">
                         <ion-item-options side="start">
-                            <ion-item-option color="danger" expandable>
+                            <ion-item-option @click="deleteTask(item)" color="danger" expandable>
                                 <ion-icon :icon="trash" size="large"></ion-icon>
                             </ion-item-option>
                         </ion-item-options>
 
                         <ion-item detail="true">
                             <ion-label>
-                                <h2></h2>
-                                <p style="color:red"></p>
+                                <h2 style="color:#3490dc"><s>{{item.task}}</s></h2>
+                                <p><s>{{item.dueDate}}</s></p>
+                                <ion-badge color="new">{{item.priority}}</ion-badge>
                             </ion-label>
                         </ion-item>
 
                         <ion-item-options side="end">
-                                <ion-item-option color="primary" expandable>
-                                    <ion-checkbox></ion-checkbox>
-                                </ion-item-option>
+                            <ion-item-option @click="notDoneTask(item)" color="white" expandable>
+                                <ion-checkbox :checked="item.done"></ion-checkbox>
+                            </ion-item-option>
                         </ion-item-options>
                         
                     </ion-item-sliding>
@@ -156,11 +160,12 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
 IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal} from '@ionic/vue';
 import {ellipsisVertical, cart, trash, add} from 'ionicons/icons';
 import NewTask from "@/components/NewTask.vue";
+import {useStore} from 'vuex';
 
 export default defineComponent({
 
@@ -171,10 +176,56 @@ export default defineComponent({
     },
 
     setup(){
+        function mudarcor(item){
+               const result = [];
+               console.log(item.detail)
+               if(item.priority == 'Baixa Prioridade'){
+                   console.log("É primary")
+                   result.push('#2E7D32');
+               }else if(item.priority == 'Média Prioridade'){
+                   result.push('#F57F17')
+               }else{
+                   result.push('#C62828')
+               }
+               return result;
+        }
         const isOpenNewTask = ref(false);
+        const store = useStore();
+        const state = reactive({
+            tasksMusic: computed(() =>{
+                return store.getters.tasksByCategory('Shopping');
+            }),
+            today: computed(() => {
+                return store.getters.today(state.tasksMusic);
+            }),
+            late: computed(() => {
+                return store.getters.late(state.tasksMusic);
+            }),
+            later: computed(() => {
+                return store.getters.later(state.tasksMusic);
+            }),
+            done: computed(() => {
+                return store.getters.done(state.tasksMusic);
+            })
+        })
+        function getTasksMusic() {
+            store.commit('getTasks');
+        }
+        function doneTask(item) {
+            store.commit('doneTask',item);
+        }
+        function notDoneTask(item) {
+            store.commit('notDoneTask',item);
+        }
+        function deleteTask(item) {
+            store.commit('deleteTask',item);
+        }
+        onMounted(() => {
+            getTasksMusic();
+        })
         return {
-            isOpenNewTask,
-            ellipsisVertical, cart, trash, add
+            isOpenNewTask, state, store,
+            ellipsisVertical, cart, trash, add, doneTask, notDoneTask, deleteTask, mudarcor
         }
     }
 
