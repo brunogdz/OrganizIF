@@ -32,7 +32,7 @@
 
                         <ion-card-content>
                             <ion-card-title class="text-2x1">Trabalho</ion-card-title>
-                            <ion-card-subtitle>Tarefas</ion-card-subtitle>
+                            <ion-card-subtitle>{{state.lengthOfWorkTasks}} Tarefas</ion-card-subtitle>
                         </ion-card-content>
 
                     </router-link>
@@ -64,7 +64,7 @@
 
                         <ion-card-content>
                             <ion-card-title class="text-2x1">Estudar</ion-card-title>
-                            <ion-card-subtitle>Tarefas e Atividades</ion-card-subtitle>
+                            <ion-card-subtitle>{{state.lengthOfStudyTasks}} Tarefas e Atividades</ion-card-subtitle>
                         </ion-card-content>
 
                     </router-link>
@@ -80,7 +80,7 @@
 
                         <ion-card-content>
                             <ion-card-title class="text-2x1">Musicas</ion-card-title>
-                            <ion-card-subtitle>Anotar musicas para não esquecer</ion-card-subtitle>
+                            <ion-card-subtitle>{{state.lengthOfMusicTasks}} Tarefas e Atividades</ion-card-subtitle>
                         </ion-card-content>
 
                     </router-link>
@@ -96,7 +96,7 @@
 
                         <ion-card-content>
                             <ion-card-title class="text-2x1">Leitura</ion-card-title>
-                            <ion-card-subtitle>Livros interessantes</ion-card-subtitle>
+                            <ion-card-subtitle>{{state.lengthOfReadTasks}} Tarefas e Atividades</ion-card-subtitle>
                         </ion-card-content>
 
                     </router-link>
@@ -112,7 +112,7 @@
 
                         <ion-card-content>
                             <ion-card-title class="text-2x1">Casa</ion-card-title>
-                            <ion-card-subtitle>Tarefas</ion-card-subtitle>
+                            <ion-card-subtitle>{{state.lengthOfHomeTasks}} Tarefas e Atividades</ion-card-subtitle>
                         </ion-card-content>
 
                     </router-link>
@@ -128,7 +128,7 @@
 
                         <ion-card-content>
                             <ion-card-title class="text-2x1">Compras</ion-card-title>
-                            <ion-card-subtitle>Anotações</ion-card-subtitle>
+                            <ion-card-subtitle>{{state.lengthOfShoppingTasks}} Tarefas e Atividades</ion-card-subtitle>
                         </ion-card-content>
 
                     </router-link>
@@ -144,7 +144,7 @@
 
                         <ion-card-content>
                             <ion-card-title class="text-2x1">Viagens</ion-card-title>
-                            <ion-card-subtitle>Lugares para visitar</ion-card-subtitle>
+                            <ion-card-subtitle>{{state.lengthOfTravelTasks}} Tarefas e Atividades</ion-card-subtitle>
                         </ion-card-content>
 
                     </router-link>
