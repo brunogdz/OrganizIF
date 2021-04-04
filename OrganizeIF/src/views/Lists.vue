@@ -16,7 +16,7 @@
 
                         <ion-card-content>
                             <ion-card-title class="text-2x1">Todos</ion-card-title>
-                            <ion-card-subtitle>Tarefas</ion-card-subtitle>
+                            <ion-card-subtitle>{{state.lengthAllTasks}} Tarefas</ion-card-subtitle>
                         </ion-card-content>
 
                     </router-link>
@@ -204,10 +204,11 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, ref , reactive} from "vue";
 import { IonPage, IonCard, IonCardHeader, IonIcon, IonCardContent, IonFabButton, IonCardTitle, IonCardSubtitle, IonFab, IonModal } from '@ionic/vue';
 import { clipboard, briefcase, bulb, calendar, airplane, book, cart, add, headset, home, pencil, school} from 'ionicons/icons';
 import NewTask from "@/components/NewTask.vue";
+import {useStore} from 'vuex';
 export default defineComponent({
 
     components:{
@@ -218,7 +219,45 @@ export default defineComponent({
         setup(){
 
         const isOpenNewTask = ref(false);
+        const store = useStore();
+        const state = reactive({
+            lengthAllTasks: computed(() => {
+                return store.state.tasks.length;
+            }),
+            lengthOfWorkTasks: computed(() => {
+                return store.getters.lengthTasksByCategory('Work');
+            }),
+            lengthOfTravelTasks: computed(() => {
+                return store.getters.lengthTasksByCategory('Travel');
+            }),
+            lengthOfStudyTasks: computed(() => {
+                return store.getters.lengthTasksByCategory('Study');
+            }),
+            lengthOfMusicTasks: computed(() => {
+                return store.getters.lengthTasksByCategory('Music');
+            }),
+            lengthOfReadTasks: computed(() => {
+                return store.getters.lengthTasksByCategory('Read');
+            }),
+            lengthOfShoppingTasks: computed(() => {
+                return store.getters.lengthTasksByCategory('Shopping');
+            }),
+            lengthOfHomeTasks: computed(() => {
+                return store.getters.lengthTasksByCategory('Home');
+            }),
+        })
+
+        function getTasks(){
+            store.commit('getTasks');
+        }
+
+        onMounted(() => {
+            if (store.state.tasks.length == 0) {
+                getTasks();
+            }
+        })
         return {
+            store, state, getTasks, 
             clipboard, briefcase, bulb, calendar, airplane, book, cart, add, headset, home, pencil, school, isOpenNewTask
         }
     }
