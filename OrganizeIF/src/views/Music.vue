@@ -9,7 +9,7 @@
         </ion-toolbar>
 
         <ion-content class="overflow-auto">
-            <div class="flex flex-col justify-center items-center mt-2">
+            <div class="flex flex-col justify-center items-center">
                 <div class="text-center">
                     <ion-icon :icon="headset" size="large" class="text-indigo-400"></ion-icon>
                 </div>
@@ -249,4 +249,6 @@ export default defineComponent({
   --ion-color-shade: var(--ion-color-new-shade);
   --ion-color-tint: var(--ion-color-new-tint);
 }
+
+
 </style>

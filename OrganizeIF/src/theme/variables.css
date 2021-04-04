@@ -3,6 +3,20 @@ http://ionicframework.com/docs/theming/ */
 .ion-color-warnning {
   --ion-color-warning: #ffc409;
 }
+
+.item-inner {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.item-inner p{
+  padding-bottom: 6px;
+  padding-top: 6px;
+}
+
+.item-inner h2::first-letter{
+  text-transform: uppercase;
+}
 /** Ionic CSS Variables **/
 :root {
   /** primary **/

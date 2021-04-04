@@ -182,5 +182,21 @@ export default defineComponent({
 </script>
 
 <style>
+:root {
+  --ion-color-new: #00ACC1;
+  --ion-color-new-rgb: 0,172,193;
+  --ion-color-new-contrast: #ffffff;
+  --ion-color-new-contrast-rgb: 255,255,255;
+  --ion-color-new-shade: #0097aa;
+  --ion-color-new-tint: #1ab4c7;
+}
 
+.ion-color-new {
+  --ion-color-base: var(--ion-color-new);
+  --ion-color-base-rgb: var(--ion-color-new-rgb);
+  --ion-color-contrast: var(--ion-color-new-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-new-contrast-rgb);
+  --ion-color-shade: var(--ion-color-new-shade);
+  --ion-color-tint: var(--ion-color-new-tint);
+}
 </style>

@@ -156,11 +156,12 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import { IonPage, IonToolbar, IonButtons, IonBackButton, IonIcon, IonContent, IonCardTitle, IonCardSubtitle, IonListHeader, IonItemSliding, IonItemOption, IonItemOptions,
 IonCheckbox, IonLabel, IonList, IonItem, IonFab, IonFabButton, IonModal} from '@ionic/vue';
 import {ellipsisVertical, briefcase, trash, add} from 'ionicons/icons';
 import NewTask from "@/components/NewTask.vue";
+import {useStore} from 'vuex';
 
 export default defineComponent({
 
@@ -171,7 +172,53 @@ export default defineComponent({
     },
 
     setup(){
+        function mudarcor(item){
+               const result = [];
+               console.log(item.detail)
+               if(item.priority == 'Baixa Prioridade'){
+                   console.log("É primary")
+                   result.push('#2E7D32');
+               }else if(item.priority == 'Média Prioridade'){
+                   result.push('#F57F17')
+               }else{
+                   result.push('#C62828')
+               }
+               return result;
+        }
         const isOpenNewTask = ref(false);
+        const store = useStore();
+        const state = reactive({
+            tasksMusic: computed(() =>{
+                return store.getters.tasksByCategory('Work');
+            }),
+            today: computed(() => {
+                return store.getters.today(state.tasksMusic);
+            }),
+            late: computed(() => {
+                return store.getters.late(state.tasksMusic);
+            }),
+            later: computed(() => {
+                return store.getters.later(state.tasksMusic);
+            }),
+            done: computed(() => {
+                return store.getters.done(state.tasksMusic);
+            })
+        })
+        function getTasksMusic() {
+            store.commit('getTasks');
+        }
+        function doneTask(item) {
+            store.commit('doneTask',item);
+        }
+        function notDoneTask(item) {
+            store.commit('notDoneTask',item);
+        }
+        function deleteTask(item) {
+            store.commit('deleteTask',item);
+        }
+        onMounted(() => {
+            getTasksMusic();
+        })
         return {
             isOpenNewTask,
             ellipsisVertical, briefcase, trash, add
@@ -182,5 +229,21 @@ export default defineComponent({
 </script>
 
 <style>
+:root {
+  --ion-color-new: #00ACC1;
+  --ion-color-new-rgb: 0,172,193;
+  --ion-color-new-contrast: #ffffff;
+  --ion-color-new-contrast-rgb: 255,255,255;
+  --ion-color-new-shade: #0097aa;
+  --ion-color-new-tint: #1ab4c7;
+}
 
+.ion-color-new {
+  --ion-color-base: var(--ion-color-new);
+  --ion-color-base-rgb: var(--ion-color-new-rgb);
+  --ion-color-contrast: var(--ion-color-new-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-new-contrast-rgb);
+  --ion-color-shade: var(--ion-color-new-shade);
+  --ion-color-tint: var(--ion-color-new-tint);
+}
 </style>
