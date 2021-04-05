@@ -12,11 +12,23 @@ import Shopping from '../views/Shopping.vue';
 import Study from '../views/Study.vue';
 import Travel from '../views/Travel.vue';
 import PageTeste from '../views/PageTeste.vue';
+import Login from '../views/Login.vue';
+import Signup from '../views/Signup.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     redirect: '/Lists'
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: Signup
   },
   {
     path: '/Lists',

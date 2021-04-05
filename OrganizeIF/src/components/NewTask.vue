@@ -53,7 +53,6 @@
                             <ion-select-option value="Study">Estudar</ion-select-option>
                             <ion-select-option value="Home">Casa</ion-select-option>
                             <ion-select-option value="Travel">Viagens</ion-select-option>
-                            <ion-select-option value="Ideas">Ideias</ion-select-option>
                             <ion-select-option value="Music">Música</ion-select-option>
                             <ion-select-option value="Read">Leitura</ion-select-option>
                             <ion-select-option value="Shopping">Compra</ion-select-option>

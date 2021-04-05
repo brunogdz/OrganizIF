@@ -4,6 +4,31 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-warning: #ffc409;
 }
 
+.background-container{
+  /* background-image: url('../../public/assets/icon/Pc_coffe.jpg'); */
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background: url('../../public/assets/Pc_coffe.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0%;
+}
+
+.page-login{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center
+}
+
+.form-login{
+  width: 300px;
+  height: 300px;
+}
+
 .item-inner {
   padding: 10px;
   border-radius: 5px;
