@@ -31,7 +31,12 @@ Trying to learn a new technology and see how it goes. I'll try to build this bec
 - [Ionic + Vue | Angular | React ](https://ionicframework.com/start#basics)
 
 # Prints
+### Mobile Login
 ![image](OrganizeIF/public/assets/print0.png)
+### Desktop Login
+![image](OrganizeIF/public/assets/print0_pc.png)
+### List 
+![image](OrganizeIF/public/assets/print1.png)
 
 ## License
 
