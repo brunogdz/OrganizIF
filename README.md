@@ -37,6 +37,10 @@ Trying to learn a new technology and see how it goes. I'll try to build this bec
 ![image](OrganizeIF/public/assets/print0_pc.png)
 ### List 
 ![image](OrganizeIF/public/assets/print1.png)
+### Menu Navigation
+![image](OrganizeIF/public/assets/print2_pc.png)
+### All tasks list
+![image](OrganizeIF/public/assets/print3.png)
 
 ## License
 
