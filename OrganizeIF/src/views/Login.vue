@@ -19,11 +19,18 @@
             </ion-item>
 
             <ion-item>
-              <ion-button type="submit" shape="round">
+              <ion-button type="submit" size="small" shape="round">
                 Entrar
                 <ion-icon slot="end" :icon="logIn"></ion-icon>
               </ion-button>
+              <ion-button type="submit" size="small" shape="round">
+                Não possuo login
+                <router-link to="/signup"></router-link>
+                <ion-icon slot="end" :icon="logIn"></ion-icon>
+              </ion-button>
             </ion-item>
+
+            
           </ion-card>
         </form>
       </ion-page>
@@ -32,7 +39,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'login',
+  data: function(){
+    return {};
+  }
+};
 </script>
 
 <style scoped>
