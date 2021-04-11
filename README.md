@@ -30,6 +30,8 @@ Trying to learn a new technology and see how it goes. I'll try to build this bec
 - [Ionic](https://ionicframework.com)
 - [Ionic + Vue | Angular | React ](https://ionicframework.com/start#basics)
 
+# Prints
+![image](OrganizeIF/public/assets/print0.png)
 
 ## License
 
