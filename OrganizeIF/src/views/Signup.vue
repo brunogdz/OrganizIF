@@ -10,16 +10,16 @@
             <ion-item>
               <ion-label position="floating">Email</ion-label>
               <ion-input required v-bind="field" type="text" name="taskField"
-                        placeholder="Insira o seu email"></ion-input>
+                        placeholder="Insira o seu email" v-model="email"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Senha</ion-label>
               <ion-input required v-bind="field" type="password" name="taskField"
-                        placeholder="Insira sua senha"></ion-input>
+                        placeholder="Insira sua senha" v-model="password"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-button type="submit" shape="round">
+              <ion-button v-on:click="register" type="submit" shape="round">
                 Registrar
                 <ion-icon slot="end" :icon="logIn"></ion-icon>
               </ion-button>
@@ -32,10 +32,28 @@
 </template>
 
 <script>
+import firebase from 'firebase';
 export default {
   name: 'register',
   data: function(){
-    return {};
+    return {
+      email: '',
+      password: '',
+    };
+  },
+  methods: {
+    register: function(e){
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+      .then(user => {
+        alert(`Criado com sucesso! ${user.email}`);
+        this.$router.push('/');
+      },
+      err => {
+        alert(err.message);
+        }
+      );
+      e.preventDefault();
+    }
   }
 };
 </script>
