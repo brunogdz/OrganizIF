@@ -1,5 +1,5 @@
 <template>
-  <ion-menu side="start" menu-id="first" content-id="main">
+  <!-- <ion-menu side="start" menu-id="first" content-id="main">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Start Menu</ion-title>
@@ -14,7 +14,7 @@
         <ion-item>Menu Item</ion-item>
       </ion-list>
     </ion-content>
-  </ion-menu>
+  </ion-menu> -->
 
   <ion-menu side="start" menu-id="custom" class="my-custom-menu" content-id="main">
     <ion-header>
@@ -22,33 +22,17 @@
         <ion-title>OrganizIF, bem-vindo!</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
+    <ion-content padding>
       <ion-list>
-        <ion-item>Login</ion-item>
-        <ion-item>Registrar</ion-item>
-        <ion-item>Agenda</ion-item>
-        <ion-item>Tarefas</ion-item>
-        <ion-item>Anotações</ion-item>
+        <ion-item href='/login'>Login</ion-item>
+        <ion-item href='/signup'>Registrar</ion-item>
+        <ion-item href='/scheduler'>Agenda</ion-item>
+        <ion-item href='/'>Tarefas</ion-item>
+        <ion-item href='/ideas'>Anotações</ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
 
-  <ion-menu side="end" type="push" content-id="main">
-    <ion-header>
-      <ion-toolbar color="danger">
-        <ion-title>End Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
 
   <ion-router-outlet id="main"></ion-router-outlet>
 </template>

@@ -165,7 +165,7 @@
                     </router-link>
             </ion-card>
 
-            <ion-card class="w-2/5">
+            <!-- <ion-card class="w-2/5">
 
                     <router-link :to="{name: 'PageTeste'}">
                         <ion-card-header>
@@ -179,7 +179,7 @@
                         </ion-card-content>
 
                     </router-link>
-            </ion-card>
+            </ion-card> -->
                 
             </div>
 

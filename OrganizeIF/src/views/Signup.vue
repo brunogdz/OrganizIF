@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     register: function(e){
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+      firebase.auth().createUserWithEmailAndPassword(this.email.trim(), this.password.trim())
       .then(user => {
         alert(`Criado com sucesso! ${user.email}`);
         this.$router.push('/');

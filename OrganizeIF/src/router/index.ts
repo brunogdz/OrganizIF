@@ -18,7 +18,7 @@ import Signup from '../views/Signup.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/Lists'
+    redirect: '/lists'
   },
   {
     path: '/login',
@@ -31,7 +31,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Signup
   },
   {
-    path: '/Lists',
+    path: '/lists',
     name: 'Lists',
     component: Lists
   },
@@ -97,4 +97,4 @@ const router = createRouter({
   routes
 })
 
-export default router
+export default router;

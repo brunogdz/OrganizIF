@@ -23,9 +23,9 @@
                 Entrar
                 <ion-icon slot="end" :icon="logIn"></ion-icon>
               </ion-button>
-              <ion-button type="submit" size="small" shape="round">
+              <ion-button @click="$router.push('/signup')" type="submit" size="small" shape="round">
                 Não possuo login
-                <router-link to="/signup"></router-link>
+                
                 <ion-icon slot="end" :icon="logIn"></ion-icon>
               </ion-button>
             </ion-item>
